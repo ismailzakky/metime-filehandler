@@ -53,6 +53,8 @@ public class MicroserviceSecurityConfiguration extends ResourceServerConfigurerA
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .and()
             .authorizeRequests()
+            .antMatchers("/assets/**").permitAll()
+            .antMatchers("/public/**").permitAll()
             .antMatchers("/api/profile-info").permitAll()
             .antMatchers("/api/**").authenticated()
             .antMatchers("/management/health").permitAll()
@@ -85,8 +87,11 @@ public class MicroserviceSecurityConfiguration extends ResourceServerConfigurerA
         // Load available UAA servers
         discoveryClient.getServices();
         HttpEntity<Void> request = new HttpEntity<Void>(new HttpHeaders());
-        return (String) keyUriRestTemplate
-            .exchange("http://uaa/oauth/token_key", HttpMethod.GET, request, Map.class).getBody()
+
+        RestTemplate restTemplate = new RestTemplate();
+
+        return (String) restTemplate
+            .exchange("http://10.17.33.240:9901/oauth/token_key", HttpMethod.GET, request, Map.class).getBody()
             .get("value");
 
     }

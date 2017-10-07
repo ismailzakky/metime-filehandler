@@ -61,7 +61,7 @@ spring:
     jpa:
         open-in-view: false
         hibernate:
-            ddl-auto: none
+            ddl-auto: update
             naming:
                 physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
                 implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
@@ -72,7 +72,25 @@ spring:
             enabled: false
     thymeleaf:
         mode: XHTML
-
+    cloud:
+        stream:
+            bindings:
+                fileInput:
+                    destination: file
+                    binder: rabbitmqserver
+                    contentType: application/x-java-serialized-object
+                    durableSubscription: true
+                    group: fileInputGroup2
+            binders:
+                rabbitmqserver:
+                    type: rabbit
+                    environment:
+                        spring:
+                            rabbitmq:
+                                host: 10.17.33.240
+                                port: 5672
+                                username: guest
+                                passowrd: guest
 security:
     basic:
         enabled: false

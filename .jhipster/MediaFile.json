@@ -1,0 +1,19 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "segment",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "uuid",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170929062729",
+    "entityTableName": "media_file",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl"
+}

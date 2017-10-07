@@ -4,6 +4,7 @@ import com.cus.metime.filehandler.client.OAuth2InterceptedFeignConfiguration;
 import com.cus.metime.filehandler.config.ApplicationProperties;
 import com.cus.metime.filehandler.config.DefaultProfileUtil;
 
+import com.cus.metime.filehandler.config.messaging.FileHandler;
 import io.github.jhipster.config.JHipsterConstants;
 
 import org.slf4j.Logger;
@@ -14,6 +15,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.core.env.Environment;
@@ -29,6 +31,7 @@ import java.util.Collection;
 )
 @EnableAutoConfiguration(exclude = {MetricFilterAutoConfiguration.class, MetricRepositoryAutoConfiguration.class})
 @EnableConfigurationProperties({LiquibaseProperties.class, ApplicationProperties.class})
+@EnableBinding(FileHandler.class)
 @EnableDiscoveryClient
 public class FilehandlerApp {
 

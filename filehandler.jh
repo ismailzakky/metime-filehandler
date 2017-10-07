@@ -1,0 +1,10 @@
+
+
+entity MediaFile {
+	id Long
+    segment String
+    uuid String
+}
+
+service all with serviceImpl 
+

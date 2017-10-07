@@ -15,10 +15,11 @@
 
 eureka:
     instance:
-        prefer-ip-address: true
+        prefer-ip-address: false
+        hostname: 10.17.59.86
     client:
         service-url:
-            defaultZone: http://admin:${jhipster.registry.password}@localhost:8761/eureka/
+            defaultZone: http://admin:admin@10.17.33.240:8761/eureka/
 
 spring:
     profiles:
@@ -34,8 +35,8 @@ spring:
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:postgresql://localhost:5432/filehandler
-        username: filehandler
-        password:
+        username: postgres
+        password: zakky
     jpa:
         database-platform: io.github.jhipster.domain.util.FixedPostgreSQL82Dialect
         database: POSTGRESQL
